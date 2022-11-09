@@ -1,0 +1,72 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+    <link rel="stylesheet" href="ca.css">
+</head>
+<h style="font-size: 50px;">Element in First Array Not in Second </h>
+<body style="background-color: rgb(109, 184, 109);">
+    
+    <div style="margin-top: 30px;">
+    <input name="ar1" id="arr1" style="background-color: rgb(178, 216, 168);height:10%;width: 10%; font-size: large;font-weight: bold;text-align: center; "; type="number">
+    <input  name="ar1" id="arr2"  style="background-color: rgb(178, 216, 168);height:10%;width: 10%; font-size: large;font-weight: bold;text-align: center; "; type="number">
+    <input  name="ar1" id="arr3" style="background-color: rgb(178, 216, 168);height:10%;width: 10%; font-size: large;font-weight: bold;text-align: center; "; type="number">
+    <input  name="ar1" id="arr4"  style="background-color: rgb(178, 216, 168);height:10%;width: 10%; font-size: large;font-weight: bold;text-align: center; "; type="number">
+    <input  name="ar1" id="arr5"  style="background-color: rgb(178, 216, 168);height:10%;width: 10%; font-size: large;font-weight: bold;text-align: center; "; type="number">
+ 
+</div>
+   <br>
+    <div >
+    <input  name="ar2" id="temp1" style="background-color: rgb(178, 216, 168);height:10%;width: 10%; font-size: large;font-weight: bold;text-align: center; "; type="number">
+    <input  name="ar2" id="temp2" style="background-color: rgb(178, 216, 168);height:10%;width: 10%; font-size: large;font-weight: bold;text-align: center; "; type="number">
+    <input  name="ar2" id="temp3" style="background-color: rgb(178, 216, 168);height:10%;width: 10%; font-size: large;font-weight: bold;text-align: center; "; type="number">
+    <input name="ar2" id="temp4" style="background-color: rgb(178, 216, 168);height:10%;width: 10%; font-size: large;font-weight: bold;text-align: center; "; type="number">
+    <input name="ar2" id="temp5" style="background-color: rgb(178, 216, 168);height:10%;width: 10%; font-size: large;font-weight: bold;text-align: center; "; type="number">
+ <br>
+ <br>
+ <br>
+
+ <button id="btn">Submit Array</button>
+ <div class="container">
+    
+ </div>
+</div>
+   <script>
+    document.querySelector('#btn').addEventListener('click',()=>{
+        var arr1=[]
+        var arr2=[]
+        for(let i=0;i<5;i++){
+            arr1.push(parseInt(document.querySelector(`#arr${i+1}`).value));
+        }
+        for(let i=0;i<5;i++){
+            arr2.push(parseInt(document.querySelector(`#temp${i+1}`).value));
+        }
+        
+        findMiss(arr1,arr2)
+    })
+	function findMiss(a,b)
+	{
+        for(let i=0;i<a.length;i++){
+            var flag=false;
+            for(let j=0;j<b.length;j++){
+                if(a[i]==b[j]){
+                    flag=true;
+                    break;
+                }
+            }
+            if(flag==false){
+                document.querySelector(`#arr${i+1}`).style.backgroundColor=`red`
+                const sel=document.querySelector('.container');
+                const div=document.createElement('div');
+                div.innerHTML=`
+                <h1 style="text-align:center">${a[i]} is not present int the second array</h1>
+                `
+                sel.append(div);
+            }
+        }
+}
+</script>
+</body>
+</html>
